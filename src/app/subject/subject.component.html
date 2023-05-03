@@ -1,0 +1,71 @@
+<h2>get All subject</h2>
+<div [hidden]="allsubjectsDiv">
+  <h2>subjects list</h2>
+
+  <ul *ngIf="subjects && subjects.length > 0">
+    <li *ngFor="let subjects of subjects">
+      <br>ID: {{subjects.id}}
+      <br>Name: {{subjects.name}}
+    </li>
+  </ul>
+
+  <p *ngIf="!subjects || !subjects.length">
+    There are no subjects!
+  </p>
+</div>
+<button class="button-7" (click)="showSubjects()">Show All subjects</button>
+<br>
+<br>
+<h2>get subject With ID:</h2>
+<div [hidden]="subjectsDiv">
+  <h2>subject</h2>
+  <ul *ngIf="subject !=null">
+    <li>
+      <br>ID: {{subject.id}}
+      <br>Name: {{subject.name}}
+    </li>
+  </ul>
+  <p *ngIf="subject == null">
+    There are no subject with this ID {{ID.value}}!
+  </p>
+</div>
+<input type="Nubmer" name="ID" #ID (keyup)="getsubjectById(ID.value)">
+<br>
+<br>
+<button class="button-7" (click)="showsubject()">Show subject with id</button>
+
+<h2>Add subject</h2>
+<div [hidden]="addDiv" class="col-md-7 border-right" style="margin-bottom: 10px;">
+  <div class="row mt-2">
+    <div class="col-md-6"><label class="labels">ID</label> <input type="text" class="form-control" #Id1>
+    </div>
+    <div class="col-md-6"><label class="labels">Name</label> <input type="text" class="form-control" #Name>
+    </div>
+  </div>
+  <button class="button-7" (click)="addNewsubject(Name.value,Id1.value)">Add new
+    subject</button>
+</div>
+<button class="button-7" (click)="addsubject()">Click here so you can Add a new subject</button>
+
+
+<h2>Update subject</h2>
+<div [hidden]="updateDiv" class="col-md-7 border-right" style="margin-bottom: 10px;">
+  <div class="row mt-2">
+    <div class="col-md-6"><label class="labels">ID</label> <input type="text" class="form-control" #Id2>
+    </div>
+    <div class="col-md-6"><label class="labels">Name</label> <input type="text" class="form-control" #Fristname>
+    </div>
+    <button class="button-7" (click)="updatesubjectById(Fristname.value,Id2.value)">Updatesubject with ID {{Id2.value}}</button>
+  </div>
+</div>
+  <button class="button-7" (click)="updatesubject()">Click here so you can update a subject</button>
+
+
+  <h2>Delete subject</h2>
+  <div [hidden]="deleteDiv" class="col-md-7 border-right" style="margin-bottom: 10px;">
+    <div class="row mt-2">
+      <div class="col-md-6"><label class="labels">ID :</label> <input type="text" class="form-control" #Id3></div>
+    </div>
+    <button class="button-7" (click)="deletesubjectById(Id3.value)">delete subject with ID {{Id3.value}}</button>
+  </div>
+  <button class="button-7" (click)="deletesubject()">Click here so you can delete subject</button>

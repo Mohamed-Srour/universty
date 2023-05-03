@@ -1,0 +1,73 @@
+<h2>get All Student</h2>
+<div [hidden]="allStudentsDiv" >
+    <h2>Students list</h2>
+
+    <ul *ngIf="students && students.length > 0">
+      <li *ngFor="let students of students">
+        <strong>{{students.firstName}} {{students.lastName | uppercase}}</strong>
+        <br>ID: {{students.id}}
+        <br>univestry: {{students.univestry}}
+      </li>
+    </ul>
+    
+    <p *ngIf="!students || !students.length">
+      There are no students!
+    </p>
+</div>
+<button class="button-7" (click)="showStudents()">Show All Students</button>
+<br>
+<br>
+<h2>get Student With ID:</h2>
+<div [hidden]="studentsDiv" >
+  <h2>Student</h2>
+  <ul *ngIf="student !=null">
+    <li>
+      <strong>{{student.firstName}} {{student.lastName | uppercase}}</strong>
+      <br>ID: {{student.id}}
+      <br>univestry: {{student.univestry}}
+    </li>
+  </ul>
+  <p *ngIf="student == null">
+    There are no student with this ID {{ID.value}}!
+  </p>
+</div>
+<input type="Nubmer" name="ID" #ID (keyup)="getStudentById(ID.value)">
+<br>
+<br>
+<button class="button-7" (click)="showStudent()">Show Student with id</button>
+
+<h2>Add Student</h2>
+<div [hidden]="addDiv" class="col-md-7 border-right" style="margin-bottom: 10px;">
+  <div class="row mt-2">
+      <div class="col-md-6"><label class="labels">Fisrt Name</label> <input type="text" class="form-control" #Fristname></div>
+      <div class="col-md-6"><label class="labels">Middle Name</label> <input type="text" class="form-control" #Middlename></div>
+      <div class="col-md-6"><label class="labels">Last Name</label> <input type="text" class="form-control" #LastName></div>
+  </div>
+    <button class="button-7" (click)="addNewStudent(Fristname.value,MiddleName.value,LastName.value)">Add new Student</button>
+</div>
+<button class="button-7" (click)="addStudent()">Click here so you can Add a new student</button>
+
+
+<h2>Update Student</h2>
+<div [hidden]="updateDiv" class="col-md-7 border-right" style="margin-bottom: 10px;">
+  <div class="row mt-2">
+    <div class="col-md-6"><label class="labels">ID :</label> <input type="text" class="form-control" #Id></div>
+      <div class="col-md-6"><label class="labels">Fisrt Name</label> <input type="text" class="form-control" #Fristname></div>
+      <div class="col-md-6"><label class="labels">Middle Name</label> <input type="text" class="form-control" #MiddleName></div>
+      <div class="col-md-6"><label class="labels">Last Name</label> <input type="text" class="form-control" #LastName></div>
+  </div>
+    <button class="button-7" (click)="updateStudentById(Fristname.value,MiddleName.value,LastName.value,Id.value)">Update Student with ID {{Id.value}}</button>
+</div>
+<button class="button-7" (click)="updateStudent()">Click here so you can update a student</button>
+
+
+<h2>Delete Student</h2>
+<div [hidden]="deleteDiv" class="col-md-7 border-right" style="margin-bottom: 10px;">
+  <div class="row mt-2">
+    <div class="col-md-6"><label class="labels">ID :</label> <input type="text" class="form-control" #Id2></div>
+  </div>
+    <button class="button-7" (click)="deleteStudentById(Id.value)">delete Student with ID {{Id2.value}}</button>
+</div>
+<button class="button-7" (click)="deleteStudent()">Click here so you can delete student</button>
+
+
